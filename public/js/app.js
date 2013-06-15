@@ -5,7 +5,6 @@ function save_drag_points(self){
                left: $(self).css('left'),
                classList: $(self).attr('class').split(/\s+/)
              }
-  console.log(data);
   $.jStorage.set("mykey", data);
 }
 
