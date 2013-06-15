@@ -1,6 +1,12 @@
 
 function save_the_data(self){
-  var page = { items: [] }
+  var page = { items: [], background_classes: [] }
+
+  var class_list = $('.chosen.landscape').attr('class').split(/\s+/);
+  $(class_list).each(function(index, value){
+    page.background_classes.push(value);
+  });
+
   $('.dropped').each(function(){
     var self = $(this);
     var icon = self.parent().attr('data-icon');
@@ -18,7 +24,14 @@ function save_the_data(self){
 
 function load_the_data(){
   page = $.jStorage.get("mykey");
-  if (page == null) page = { items: [] };
+  if (page == null) var page = { items: [], background_classes: [] };
+ 
+  //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+  $(page.background_classes).each(function(index, value){
+    $('.chosen.landscape').addClass(value);
+    console.log(value);
+  });
+
   $(page.items).each(function(index, value){
     var div = $('<div><div class="content"></div></div>');
 
@@ -89,6 +102,7 @@ $(document).ready(function() {
 
       $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
 
+      save_the_data(this);
     });
   });
 
