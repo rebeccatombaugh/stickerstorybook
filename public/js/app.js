@@ -87,5 +87,9 @@ $(document).ready(function() {
   $('button.delete').click(function() {
     $('.selected.draggable').remove();
   });
+  
+  $('button.flip').click(function() {
+    $('.selected.draggable').toggleClass('flipped');
+  });
 
 });

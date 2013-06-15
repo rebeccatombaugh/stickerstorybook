@@ -17,6 +17,7 @@ body > div { }
 .sticker_pen .sticker.tall,
 .sticker_pen .sticker.tall .content { width: 100px; height: 150px; }
 .sticker_pen .sticker.tall .selected { width: 115px; height: 165px; }
+.sticker_pen .sticker .draggable.flipped .content { -webkit-transform: rotateY(180deg); } 
 
 .sticker_pen .elephant .content { background-image: url(../images/elephant.png); }
 .sticker_pen .apple .content { background-image: url(../images/apple.png); }
