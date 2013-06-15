@@ -1,5 +1,7 @@
 
-function save_the_data(self){
+var page_id = "page1"
+
+function save_the_data(){
   var page = { items: [], background_classes: [] }
 
   var class_list = $('.chosen.landscape').attr('class').split(/\s+/);
@@ -19,17 +21,16 @@ function save_the_data(self){
                }
     page.items.push(data);
   });
-  $.jStorage.set("mykey", page);
+  $.jStorage.set(page_id, page);
 }
 
 function load_the_data(){
-  page = $.jStorage.get("mykey");
+  page = $.jStorage.get(page_id);
   if (page == null) var page = { items: [], background_classes: [] };
  
   //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
   $(page.background_classes).each(function(index, value){
     $('.chosen.landscape').addClass(value);
-    console.log(value);
   });
 
   $(page.items).each(function(index, value){
@@ -37,7 +38,8 @@ function load_the_data(){
 
     var the_special_class = '';
     $(value['classList']).each(function(index, value){
-      div.addClass(value);
+      if (value != 'selected')
+        div.addClass(value);
     });
 
     div.css('position', 'relative');
@@ -78,7 +80,7 @@ $(document).ready(function() {
       fresh_sticker.draggable({
         stop: function() {                    
           on_drag_stop({ sticker: fresh_sticker });
-          save_the_data(this);
+          save_the_data();
         }
       });
       
@@ -91,7 +93,7 @@ $(document).ready(function() {
       
         stop: function() {                    
           on_drag_stop({ sticker: sticker });
-          save_the_data(this)
+          save_the_data()
         }
       });
     });
@@ -102,16 +104,18 @@ $(document).ready(function() {
     
     $(this).click(function() {
       $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
-      save_the_data(this);
+      save_the_data();
     });
   });
   
   $('button.delete').click(function() {
     $('.selected.draggable').remove();
+    save_the_data();
   });
   
   $('button.flip').click(function() {
     $('.selected.draggable').toggleClass('flipped');
+    save_the_data();
   });
 
 });
