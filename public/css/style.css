@@ -4,13 +4,14 @@ body > div { border: 1px solid black; }
 
 .landscape { float: left; height: 600px; width: 800px; }
 .sticker_pen { float: left; height: 600px; padding-top: 50px; width: 224px; }
-.sticker_pen .sticker { background-repeat: no-repeat; background-size: 100%; height: 100px; margin: 0 auto; width: 150px; }
-.sticker_pen .sticker.wide { width: 150px; height: 100px; }
-.sticker_pen .sticker.tall { width: 100px; height: 150px; }
-.sticker_pen .sticker.permanent { margin: 0 37px; position: absolute; }
+.sticker_pen .sticker > div { background-repeat: no-repeat; background-size: 100%; height: 100px; margin: 0 37px; position: absolute; width: 150px; }
+.sticker_pen .sticker .permanent { margin: 0 37px; }
+.sticker_pen .sticker .permanent { margin: 0 37px; }
+.sticker_pen .sticker.wide .draggable { width: 150px; height: 100px; }
+.sticker_pen .sticker.tall .draggable { width: 100px; height: 150px; }
 
-.sticker_pen .elephant.sticker { background-image: url(../images/elephant.png); }
-.sticker_pen .apple.sticker { background-image: url(../images/apple.png); }
+.sticker_pen .elephant > div { background-image: url(../images/elephant.png); }
+.sticker_pen .apple > div { background-image: url(../images/apple.png); }
 
 .tools { clear: left; float: left; height: 150px; width: 1024px; }
 
