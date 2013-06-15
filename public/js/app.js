@@ -108,10 +108,12 @@ $(document).ready(function() {
   
   $('button.delete').click(function() {
     $('.selected.draggable').remove();
+    save_the_data();
   });
   
   $('button.flip').click(function() {
     $('.selected.draggable').toggleClass('flipped');
+    save_the_data();
   });
 
 });
