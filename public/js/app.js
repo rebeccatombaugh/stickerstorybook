@@ -63,4 +63,15 @@ $(document).ready(function() {
       });
     });
   });
+  
+  $('.landscape.menu .background').each(function() {
+    var selected_background = $(this);
+    
+    $(this).click(function() {
+
+      $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+
+    });
+  });
+
 });

@@ -19,7 +19,9 @@ body > div { }
 
 .landscape.menu { border-top: 2px dashed black; bottom: 0; height: 100px; padding: 10px; position: absolute; width: 800px; }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }
+.chosen.landscape.plains,
 .landscape.menu > .plains { background-image: url(../images/plains.png); }
+.chosen.landscape.jungle,
 .landscape.menu > .jungle { background-image: url(../images/jungle.png); }
 
 .tools { clear: left; float: left; height: 150px; width: 1024px; }
