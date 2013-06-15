@@ -8,6 +8,10 @@ class App < Sinatra::Base
                ['elephant', 'wide'],
                ['apple',    'tall']
               ]}
+    @backgrounds = [
+                     'plains',
+                     'jungle',
+                   ] 
   end
 
   get '/' do

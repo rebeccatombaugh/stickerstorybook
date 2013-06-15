@@ -23,8 +23,9 @@
         
         <div class="chosen landscape">
           <div class="landscape menu">
-            <div class="plains background"></div>
-            <div class="jungle background"></div>
+            <% @backgrounds.each do |background| %>
+              <div class="<%= background %> background"></div>
+            <% end %>
           </div>
         </div>
                         
