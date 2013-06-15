@@ -1,6 +1,6 @@
 
 function save_drag_points(self){
-  var items = [];
+  var page = { items: [] }
   $('.dropped').each(function(){
     var self = $(this);
     var icon = self.parent().attr('data-icon');
@@ -11,14 +11,16 @@ function save_drag_points(self){
                  icon: icon,
                  classList: class_list
                }
-    items.push(data);
+    page.items.push(data);
   });
-  $.jStorage.set("mykey", items);
+  $.jStorage.set("mykey", page);
 }
 
 function load_the_data(){
-  items = $.jStorage.get("mykey");
-  $(items).each(function(index, value){
+  page = $.jStorage.get("mykey");
+  if (page == null)
+    page = { items: [] };
+  $(page.items).each(function(index, value){
     var div = $('<div><div class="content"></div></div>');
 
     var the_special_class = '';
@@ -32,8 +34,6 @@ function load_the_data(){
 
     $('.' + value['icon']).append(div);
   });
-
-  //if (items != undefined) {
 }
 
 $(document).ready(function() {
