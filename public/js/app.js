@@ -1,4 +1,6 @@
 
+var page_id = "page1"
+
 function save_the_data(){
   var page = { items: [], background_classes: [] }
 
@@ -19,11 +21,11 @@ function save_the_data(){
                }
     page.items.push(data);
   });
-  $.jStorage.set("mykey", page);
+  $.jStorage.set(page_id, page);
 }
 
 function load_the_data(){
-  page = $.jStorage.get("mykey");
+  page = $.jStorage.get(page_id);
   if (page == null) var page = { items: [], background_classes: [] };
  
   //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
