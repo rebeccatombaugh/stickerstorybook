@@ -3,15 +3,16 @@ function save_drag_points(self){
   var items = [];
   $('.dropped').each(function(){
     var self = $(this);
+    var icon = self.parent().attr('data-icon');
     var class_list = self.attr('class').split(/\s+/);
     var data = {
                  top: self.css('top'),
                  left: self.css('left'),
+                 icon: icon,
                  classList: class_list
                }
     items.push(data);
   });
-  console.log(items);
   $.jStorage.set("mykey", items);
 }
 
@@ -20,6 +21,7 @@ function load_the_data(){
   $(items).each(function(index, value){
     var div = $('<div><div class="draggable"></div></div>');
 
+    var the_special_class = '';
     $(value['classList']).each(function(index, value){
       div.addClass(value);
     });
@@ -28,25 +30,15 @@ function load_the_data(){
     div.css('left',     value['left']);
     div.css('top',      value['top']);
 
-    $('.elephant').append(div);
+    $('.' + value['icon']).append(div);
   });
 
   //if (items != undefined) {
 }
 
-var all_icons = [];
-
 $(document).ready(function() {
 
   load_the_data();
-  $('div').each(function(index, div){
-    class_list = $(div).attr('class').split(/\s+/);
-    $(class_list).each(function(index, the_class){
-      if (the_class.indexOf('ui_') == 0){
-        all_icons.push(the_class);
-      }
-    });
-  });
 
   $('.sticker').each(function() {
     var sticker_stack = $(this);
