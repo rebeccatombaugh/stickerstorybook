@@ -1,5 +1,5 @@
 
-function save_the_data(self){
+function save_the_data(){
   var page = { items: [], background_classes: [] }
 
   var class_list = $('.chosen.landscape').attr('class').split(/\s+/);
@@ -78,7 +78,7 @@ $(document).ready(function() {
       fresh_sticker.draggable({
         stop: function() {                    
           on_drag_stop({ sticker: fresh_sticker });
-          save_the_data(this);
+          save_the_data();
         }
       });
       
@@ -91,7 +91,7 @@ $(document).ready(function() {
       
         stop: function() {                    
           on_drag_stop({ sticker: sticker });
-          save_the_data(this)
+          save_the_data()
         }
       });
     });
@@ -102,7 +102,7 @@ $(document).ready(function() {
     
     $(this).click(function() {
       $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
-      save_the_data(this);
+      save_the_data();
     });
   });
   
