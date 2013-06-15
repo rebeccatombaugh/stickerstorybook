@@ -1,5 +1,35 @@
+
+function save_drag_points(self){
+  var data = {
+               top: $(self).css('top'),
+               left: $(self).css('left'),
+               classList: $(self).attr('class').split(/\s+/)
+             }
+  $.jStorage.set("mykey", data);
+}
+
+function load_the_data(){
+  data = $.jStorage.get("mykey");
+
+  if (data != undefined) {
+    var div = $('<div><div class="draggable"></div></div>');
+
+    $(data['classList']).each(function(index, value){
+      div.addClass(value);
+    });
+
+    div.css('position', 'relative');
+    div.css('left',     data['left']);
+    div.css('top',      data['top']);
+
+    $('.sticker_pen').append(div);
+  }
+}
+
+
 $(document).ready(function() {
 
+  load_the_data();
 
   $('.sticker').each(function() {
     var sticker_stack = $(this);
@@ -15,6 +45,7 @@ $(document).ready(function() {
       fresh_sticker.draggable({
         stop: function() {                    
           on_drag_stop({ sticker: fresh_sticker });
+          save_drag_points(this);
         }
       });
       
@@ -27,6 +58,7 @@ $(document).ready(function() {
       
         stop: function() {                    
           on_drag_stop({ sticker: sticker });
+          save_drag_points(this)
         }
       });
     });
