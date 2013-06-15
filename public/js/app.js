@@ -41,8 +41,10 @@ $(document).ready(function() {
       var clicking_is_disabled = true;
             
       $(params.sticker).unbind('click').click(function() {
-        if(!clicking_is_disabled)
-          $(this).toggleClass('selected');        
+        if(!clicking_is_disabled) {
+          $(this).toggleClass('selected');                  
+          $('.selected').not(this).removeClass('selected');
+        }
         else
           clicking_is_disabled = false;
       });      
@@ -78,10 +80,12 @@ $(document).ready(function() {
     var selected_background = $(this);
     
     $(this).click(function() {
-
       $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
-
     });
+  });
+  
+  $('button.delete').click(function() {
+    $('.selected.draggable').remove();
   });
 
 });
