@@ -1,31 +1,52 @@
 
-function save_drag_points(self){
-  var data = {
-               top: $(self).css('top'),
-               left: $(self).css('left'),
-               classList: $(self).attr('class').split(/\s+/)
-             }
-  $.jStorage.set("mykey", data);
+function save_the_data(self){
+  var page = { items: [], background_classes: [] }
+
+  var class_list = $('.chosen.landscape').attr('class').split(/\s+/);
+  $(class_list).each(function(index, value){
+    page.background_classes.push(value);
+  });
+
+  $('.dropped').each(function(){
+    var self = $(this);
+    var icon = self.parent().attr('data-icon');
+    var class_list = self.attr('class').split(/\s+/);
+    var data = {
+                 top: self.css('top'),
+                 left: self.css('left'),
+                 icon: icon,
+                 classList: class_list
+               }
+    page.items.push(data);
+  });
+  $.jStorage.set("mykey", page);
 }
 
 function load_the_data(){
-  data = $.jStorage.get("mykey");
+  page = $.jStorage.get("mykey");
+  if (page == null) var page = { items: [], background_classes: [] };
+ 
+  //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+  $(page.background_classes).each(function(index, value){
+    $('.chosen.landscape').addClass(value);
+    console.log(value);
+  });
 
-  if (data != undefined) {
-    var div = $('<div><div class="draggable"></div></div>');
+  $(page.items).each(function(index, value){
+    var div = $('<div><div class="content"></div></div>');
 
-    $(data['classList']).each(function(index, value){
+    var the_special_class = '';
+    $(value['classList']).each(function(index, value){
       div.addClass(value);
     });
 
     div.css('position', 'relative');
-    div.css('left',     data['left']);
-    div.css('top',      data['top']);
+    div.css('left',     value['left']);
+    div.css('top',      value['top']);
 
-    $('.sticker_pen').append(div);
-  }
+    $('.' + value['icon']).append(div);
+  });
 }
-
 
 $(document).ready(function() {
 
@@ -57,7 +78,7 @@ $(document).ready(function() {
       fresh_sticker.draggable({
         stop: function() {                    
           on_drag_stop({ sticker: fresh_sticker });
-          save_drag_points(this);
+          save_the_data(this);
         }
       });
       
@@ -70,7 +91,7 @@ $(document).ready(function() {
       
         stop: function() {                    
           on_drag_stop({ sticker: sticker });
-          save_drag_points(this)
+          save_the_data(this)
         }
       });
     });
@@ -81,6 +102,7 @@ $(document).ready(function() {
     
     $(this).click(function() {
       $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+      save_the_data(this);
     });
   });
   
