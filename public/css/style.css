@@ -13,8 +13,10 @@ body > div { }
 .sticker_pen .sticker .permanent { margin: 0 37px; }
 .sticker_pen .sticker.wide, 
 .sticker_pen .sticker.wide .content { width: 150px; height: 100px; }
+.sticker_pen .sticker.wide .selected { width: 165px; height: 115px; }
 .sticker_pen .sticker.tall,
 .sticker_pen .sticker.tall .content { width: 100px; height: 150px; }
+.sticker_pen .sticker.tall .selected { width: 115px; height: 165px; }
 
 .sticker_pen .elephant .content { background-image: url(../images/elephant.png); }
 .sticker_pen .apple .content { background-image: url(../images/apple.png); }
