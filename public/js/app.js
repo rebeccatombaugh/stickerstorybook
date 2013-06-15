@@ -1,5 +1,5 @@
 
-function save_drag_points(self){
+function save_the_data(self){
   var page = { items: [] }
   $('.dropped').each(function(){
     var self = $(this);
@@ -63,7 +63,7 @@ $(document).ready(function() {
       fresh_sticker.draggable({
         stop: function() {                    
           on_drag_stop({ sticker: fresh_sticker });
-          save_drag_points(this);
+          save_the_data(this);
         }
       });
       
@@ -76,7 +76,7 @@ $(document).ready(function() {
       
         stop: function() {                    
           on_drag_stop({ sticker: sticker });
-          save_drag_points(this)
+          save_the_data(this)
         }
       });
     });
