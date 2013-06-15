@@ -1,6 +1,14 @@
-$(document).ready(function() {
+function save_drag_points(){
+  var data = {
+               top: $(this).css('top'),
+               left: $(this).css('left'),
+               classList: $(this).attr('class').split(/\s+/)
+             }
+  console.log(data);
+  $.jStorage.set("mykey", data);
+}
 
-
+function load_the_data(){
   data = $.jStorage.get("mykey");
 
   if (data != undefined) {
@@ -16,20 +24,12 @@ $(document).ready(function() {
 
     $('.sticker_pen').append(div);
   }
+}
+
+$(document).ready(function() {
+  load_the_data();
 
   $('.sticker.draggable').draggable({
-    stop: function() {
-            var data = {
-                         top: $(this).css('top'),
-                         left: $(this).css('left'),
-                         classList: $(this).attr('class').split(/\s+/)
-                       }
-            console.log(data);
-            $.jStorage.set("mykey", data);
-          }
+    stop: save_drag_points
   });
-
-
-
-
 });
