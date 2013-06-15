@@ -46,6 +46,10 @@ $(document).ready(function() {
     var on_drag_stop = function(params) {      
       params.sticker.addClass('dropped');
       add_a_new_sticker_to_the_top_of_the_stack();
+      
+      $(params.sticker).click(function() {
+        $(this).toggleClass('selected');
+      });
     };
     
     var add_a_new_sticker_to_the_top_of_the_stack = function() {
@@ -72,4 +76,15 @@ $(document).ready(function() {
       });
     });
   });
+  
+  $('.landscape.menu .background').each(function() {
+    var selected_background = $(this);
+    
+    $(this).click(function() {
+
+      $('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+
+    });
+  });
+
 });
