@@ -23,20 +23,18 @@
         
         <div class="chosen landscape"></div>
         <div class="landscape menu">
-          <div class="plains background"></div>
-          <div class="jungle background"></div>
+            <% @backgrounds.each do |background| %>
+              <div class="<%= background %> background"></div>
+            <% end %>
         </div>   
         <div class="sticker_pen">
           
-          <div data-icon="elephant" class="wide elephant sticker">
-            <div class="permanent"><div class="content"></div></div>
-            <div class="draggable"><div class="content"></div></div>
-          </div>
-          
-          <div data-icon="apple" class="tall apple sticker">
-            <div class="permanent"><div class="content"></div></div>
-            <div class="draggable"><div class="content"></div></div>
-          </div>
+          <% @images.each do |image| %>
+            <div data-icon="<%= image.name %>" class="<%= image.type %> <%= image.name %> sticker">
+              <div class="permanent"><div class="content"></div></div>
+              <div class="draggable"><div class="content"></div></div>
+            </div>
+          <% end %>
           
         </div>
         
