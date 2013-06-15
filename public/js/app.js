@@ -29,7 +29,6 @@ function load_the_data(){
   //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
   $(page.background_classes).each(function(index, value){
     $('.chosen.landscape').addClass(value);
-    console.log(value);
   });
 
   $(page.items).each(function(index, value){
