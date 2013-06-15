@@ -34,10 +34,19 @@ function load_the_data(){
   //if (items != undefined) {
 }
 
+var all_icons = [];
 
 $(document).ready(function() {
 
   load_the_data();
+  $('div').each(function(index, div){
+    class_list = $(div).attr('class').split(/\s+/);
+    $(class_list).each(function(index, the_class){
+      if (the_class.indexOf('ui_') == 0){
+        all_icons.push(the_class);
+      }
+    });
+  });
 
   $('.sticker').each(function() {
     var sticker_stack = $(this);
