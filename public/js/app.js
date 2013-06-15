@@ -36,7 +36,8 @@ function load_the_data(){
 
     var the_special_class = '';
     $(value['classList']).each(function(index, value){
-      div.addClass(value);
+      if (value != 'selected')
+        div.addClass(value);
     });
 
     div.css('position', 'relative');
