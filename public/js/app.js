@@ -19,7 +19,7 @@ function save_drag_points(self){
 function load_the_data(){
   items = $.jStorage.get("mykey");
   $(items).each(function(index, value){
-    var div = $('<div><div class="draggable"></div></div>');
+    var div = $('<div><div class="content"></div></div>');
 
     var the_special_class = '';
     $(value['classList']).each(function(index, value){
@@ -47,9 +47,15 @@ $(document).ready(function() {
       params.sticker.addClass('dropped');
       add_a_new_sticker_to_the_top_of_the_stack();
       
-      $(params.sticker).click(function() {
-        $(this).toggleClass('selected');
-      });
+      var clicking_is_disabled = true;
+            
+      $(params.sticker).unbind('click').click(function() {
+        if(!clicking_is_disabled)
+          $(this).toggleClass('selected');        
+        else
+          clicking_is_disabled = false;
+      });      
+    
     };
     
     var add_a_new_sticker_to_the_top_of_the_stack = function() {
