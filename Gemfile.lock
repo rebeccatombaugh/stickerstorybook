@@ -1,5 +1,8 @@
 GEM
+  remote: https://rubygems.org/
   specs:
+    daemons (1.1.9)
+    eventmachine (1.0.3)
     haml (4.0.1)
       tilt
     rack (1.5.2)
