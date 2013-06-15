@@ -1,29 +1,37 @@
 
 function save_drag_points(self){
-  var data = {
-               top: $(self).css('top'),
-               left: $(self).css('left'),
-               classList: $(self).attr('class').split(/\s+/)
-             }
-  $.jStorage.set("mykey", data);
+  var items = [];
+  $('.dropped').each(function(){
+    var self = $(this);
+    var class_list = self.attr('class').split(/\s+/);
+    var data = {
+                 top: self.css('top'),
+                 left: self.css('left'),
+                 classList: class_list
+               }
+    items.push(data);
+  });
+  console.log(items);
+  $.jStorage.set("mykey", items);
 }
 
 function load_the_data(){
-  data = $.jStorage.get("mykey");
-
-  if (data != undefined) {
+  items = $.jStorage.get("mykey");
+  $(items).each(function(index, value){
     var div = $('<div><div class="draggable"></div></div>');
 
-    $(data['classList']).each(function(index, value){
+    $(value['classList']).each(function(index, value){
       div.addClass(value);
     });
 
     div.css('position', 'relative');
-    div.css('left',     data['left']);
-    div.css('top',      data['top']);
+    div.css('left',     value['left']);
+    div.css('top',      value['top']);
 
-    $('.sticker_pen').append(div);
-  }
+    $('.elephant').append(div);
+  });
+
+  //if (items != undefined) {
 }
 
 
