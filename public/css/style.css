@@ -7,7 +7,9 @@ body > div { border: 1px solid black; }
 .sticker_pen .sticker > div { background-repeat: no-repeat; background-size: 100%; height: 100px; margin: 0 37px; position: absolute !important; width: 150px; }
 .sticker_pen .sticker .permanent { margin: 0 37px; }
 .sticker_pen .sticker .permanent { margin: 0 37px; }
+.sticker_pen .sticker.wide, 
 .sticker_pen .sticker.wide > div { width: 150px; height: 100px; }
+.sticker_pen .sticker.tall,
 .sticker_pen .sticker.tall > div { width: 100px; height: 150px; }
 
 .sticker_pen .elephant > div { background-image: url(../images/elephant.png); }
