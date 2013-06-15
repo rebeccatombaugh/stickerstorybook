@@ -2,7 +2,7 @@
 body { overflow: hidden; width: 1028px; }
 body > div { }
 
-.chosen.landscape { float: left; height: 600px; width: 800px; }
+.chosen.landscape { float: left; height: 600px; position: static; width: 800px; }
 .chosen.landscape { background-image: url(../images/plains.png); background-repeat: no-repeat; background-position: center center; background-size: 90%; }
 
 .sticker_pen { border-left: 2px dashed black; float: left; height: 600px; padding-top: 50px; width: 224px; }
