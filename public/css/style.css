@@ -2,33 +2,33 @@
 body { overflow: hidden; width: 1028px; }
 body > div { }
 
-.chosen.landscape { float: left; height: 600px; position: static; width: 800px; }
-.chosen.landscape { background-image: url(../images/plains.png); background-repeat: no-repeat; background-position: center center; background-size: 90%; }
+.chosen.landscape { float: left; height: 768px; width: 800px; }
+.chosen.landscape { background-image: url(../images/plains.png); background-repeat: no-repeat; background-position: top left; background-size: 80%; }
 
-.sticker_pen { border-left: 2px dashed black; float: left; height: 600px; padding-top: 50px; width: 224px; }
-.sticker_pen .sticker > div { margin: 0 37px; height: 100px; position: absolute !important; width: 150px; }
+.sticker_pen { background: #e1e1e1; border-left: 2px dashed black; height: 600px; padding-top: 10px; position: absolute; right: 0; width: 124px; }
+.sticker_pen .sticker > div { margin: 0 17px; height: 100px; position: absolute !important; width: 150px; }
 .sticker_pen .sticker .content { background-repeat: no-repeat; background-size: 100%; height: 100px; width: 150px; }
-.sticker_pen .sticker > div.selected { border: 4px dashed #d1d1d1; margin: -9px 28px; padding: 5px; }
+.sticker_pen .sticker > div.selected { border: 4px dashed #d1d1d1; margin: -9px 8px; padding: 5px; }
 .sticker_pen .sticker > div.selected .content {  }
-.sticker_pen .sticker .permanent { margin: 0 37px; }
+.sticker_pen .sticker .permanent { margin: 0 17px; }
 .sticker_pen .sticker.wide, 
-.sticker_pen .sticker.wide .content { width: 150px; height: 100px; }
-.sticker_pen .sticker.wide .selected { width: 165px; height: 115px; }
+.sticker_pen .sticker.wide .content { width: 100px; height: 70px; }
+.sticker_pen .sticker.wide .selected { width: 115px; height: 85px; }
 .sticker_pen .sticker.tall,
-.sticker_pen .sticker.tall .content { width: 100px; height: 150px; }
-.sticker_pen .sticker.tall .selected { width: 115px; height: 165px; }
+.sticker_pen .sticker.tall .content { width: 70px; height: 100px; }
+.sticker_pen .sticker.tall .selected { width: 85px; height: 115px; }
 .sticker_pen .sticker .draggable.flipped .content { -webkit-transform: rotateY(180deg); } 
 
 .sticker_pen .elephant .content { background-image: url(../images/elephant.png); }
 .sticker_pen .apple .content { background-image: url(../images/apple.png); }
 
-.landscape.menu { border-top: 2px dashed black; bottom: 80px; height: 100px; padding: 10px; position: absolute; width: 800px; }
+.landscape.menu { background: url(../images/sticker_bg.png);  border-top: 2px dashed black; bottom: -30px; height: 80px; padding: 10px; position: absolute; width: 100%; }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }
 .chosen.landscape.plains,
 .landscape.menu > .plains { background-image: url(../images/plains.png); }
 .chosen.landscape.jungle,
 .landscape.menu > .jungle { background-image: url(../images/jungle.png); }
 
-.tools { background: white; border-top: 2px solid red; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
+.tools { display: none; background: white; border-top: 2px solid red; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
 
 
