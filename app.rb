@@ -8,4 +8,8 @@ class App < Sinatra::Base
   get '/edit' do
     erb :edit
   end
+
+  get '/test_storage' do
+    erb :test_storage
+  end
 end
