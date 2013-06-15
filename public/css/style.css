@@ -22,6 +22,10 @@ body > div { }
 .sticker_pen .elephant .content { background-image: url(../images/elephant.png); }
 .sticker_pen .apple .content { background-image: url(../images/apple.png); }
 .sticker_pen .tree .content { background-image: url(../images/tree.png); }
+.sticker_pen .shark .content { background-image: url(../images/shark.png); }
+.sticker_pen .pig .content { background-image: url(../images/pig.png); }
+.sticker_pen .butterfly .content { background-image: url(../images/butterfly.png); }
+.sticker_pen .helicopter .content { background-image: url(../images/helicopter.png); }
 
 .landscape.menu { background: url(../images/sticker_bg.png);  border-top: 2px dashed black; bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }
