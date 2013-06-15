@@ -6,7 +6,8 @@ class App < Sinatra::Base
   before do
     @images = [:name, :type].to_objects {[
                ['elephant', 'wide'],
-               ['apple',    'tall']
+               ['apple',    'tall'],
+               ['tree',     'tall']
               ]}
     @backgrounds = [
                      'plains',
