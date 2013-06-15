@@ -3,7 +3,7 @@ body { overflow: hidden; width: 1028px; }
 body > div { }
 
 .chosen.landscape { float: left; height: 768px; width: 80%; }
-.chosen.landscape { background-image: url(../images/plains.png); background-repeat: no-repeat; background-position: center top; background-size: 85%; }
+.chosen.landscape { background-image: url(../images/plains.png); background-repeat: no-repeat; background-position: center top; background-size: 98%; }
 
 .sticker_pen { background: #e1e1e1; border-left: 2px dashed black; height: 600px; padding-top: 10px; position: absolute; right: 0px; width: 124px; }
 .sticker_pen .sticker > div { margin: 0 17px; height: 100px; position: absolute !important; width: 150px; }
@@ -22,7 +22,7 @@ body > div { }
 .sticker_pen .elephant .content { background-image: url(../images/elephant.png); }
 .sticker_pen .apple .content { background-image: url(../images/apple.png); }
 
-.landscape.menu { background: #e1e1e1;  border-top: 2px dashed black; bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }
+.landscape.menu { background: url(../images/sticker_bg.png);  border-top: 2px dashed black; bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }
 .chosen.landscape.plains,
 .landscape.menu > .plains { background-image: url(../images/plains.png); }
