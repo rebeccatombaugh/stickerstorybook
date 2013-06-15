@@ -18,8 +18,7 @@ function save_drag_points(self){
 
 function load_the_data(){
   page = $.jStorage.get("mykey");
-  if (page == null)
-    page = { items: [] };
+  if (page == null) page = { items: [] };
   $(page.items).each(function(index, value){
     var div = $('<div><div class="content"></div></div>');
 
