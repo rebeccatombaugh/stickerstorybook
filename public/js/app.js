@@ -24,6 +24,7 @@ $(document).ready(function() {
                          left: $(this).css('left'),
                          classList: $(this).attr('class').split(/\s+/)
                        }
+            console.log(data);
             $.jStorage.set("mykey", data);
           }
   });
