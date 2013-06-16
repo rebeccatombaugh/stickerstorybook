@@ -50,13 +50,34 @@ function load_the_data(){
   });
 }
 
+function getImgSize(imgSrc, fn) {
+    var newImg = new Image();
+
+    newImg.onload = function() {
+      var height = newImg.height;
+      var width = newImg.width;
+      fn(width, height);
+    }
+
+    newImg.src = imgSrc; // this must be done AFTER setting onload
+}
+
 $(document).ready(function() {
 
   load_the_data();
 
+  $('.sticker').each(function() {
+    var src = $(this).find('.content').css('background-image').replace('url(', '').replace(')', '');
+    
+    getImgSize(src, function(width, height) {
+      var width_to_height_ratio = width / height;
+      console.log(width_to_height_ratio, src);
+    });
+  });
+
   $('.sticker_pen button').click(function() {
     var page_number = 0;
-    var MAX_PAGE_NUMBER = 3;
+    var MAX_PAGE_NUMBER = 12;
     return function() {
       if($(this).hasClass('prev'))
         page_number--;
