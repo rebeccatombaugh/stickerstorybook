@@ -1,5 +1,5 @@
 
-var page_id = "page1"
+var page_id = "1"
 
 function save_the_data(){
   var page = { items: [], background_classes: [] }
@@ -29,6 +29,7 @@ function load_the_data(){
   if (page == null) var page = { items: [], background_classes: [] };
  
   //$('.chosen.landscape').attr('class', 'chosen landscape').addClass(selected_background.attr('class'));
+  $('.chosen.landscape').attr('class', 'chosen landscape');
   $(page.background_classes).each(function(index, value){
     $('.chosen.landscape').addClass(value);
   });
@@ -197,3 +198,18 @@ function setup_the_page(){
     }
   }());
 }
+
+$(document).ready(function(){
+  $('.previous_page').click(function(){
+    page_id = parseInt(page_id, 10) - 1 + '';
+    console.log(page_id);
+    $('.dropped').remove();
+    setup_the_page();
+  });
+  $('.next_page').click(function(){
+    page_id = parseInt(page_id, 10) + 1 + '';
+    console.log(page_id);
+    $('.dropped').remove();
+    setup_the_page();
+  });
+});
