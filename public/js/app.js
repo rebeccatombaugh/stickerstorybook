@@ -89,6 +89,16 @@ $(document).ready(function() {
     };
   }()).click();
   
+  $('.sticker_pen').delegate('.dropped', 'click', function() {
+    $(this).toggleClass('selected');                  
+    $('.selected').not(this).removeClass('selected');
+    
+    if($('.selected').length > 0)
+      $('.tools').show();
+    else
+      $('.tools').hide();
+  });      
+
   $('.sticker').each(function() {
     var sticker_stack = $(this);
     
@@ -96,16 +106,7 @@ $(document).ready(function() {
       params.sticker.addClass('dropped');
       add_a_new_sticker_to_the_top_of_the_stack();
       
-      var clicking_is_disabled = true;
             
-      $(params.sticker).unbind('click').click(function() {
-        if(!clicking_is_disabled) {
-          $(this).toggleClass('selected');                  
-          $('.selected').not(this).removeClass('selected');
-        }
-        else
-          clicking_is_disabled = false;
-      });      
     
     };
     
