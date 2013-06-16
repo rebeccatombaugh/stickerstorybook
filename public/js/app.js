@@ -148,7 +148,23 @@ $(document).ready(function() {
     save_the_data();
   });
 
-  $('button.grow').click(function() {
-    $('.selected.draggable').toggleClass('big');
-  });
+  $('button.grow, button.shrink').click(function() {
+    var sizes = ['smallest', 'small', 'medium', 'big', 'biggest'];
+    var current_size_index = 2;
+    
+    return function() {
+      $('.selected').removeClass('smallest small medium big biggest');
+      if($(this).hasClass('grow')) {
+        current_size_index++;
+        if(current_size_index > (sizes.length - 1))
+          current_size_index = sizes.length - 1;
+        $('.selected').addClass(sizes[current_size_index]);
+      } else {
+        current_size_index--;
+        if(current_size_index < 0)
+          current_size_index = 0;
+        $('.selected').addClass(sizes[current_size_index]);
+      }
+    }
+  }());
 });

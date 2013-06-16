@@ -27,8 +27,15 @@ body > div { }
 .sticker_pen .sticker.wide .big .content { width: 105px; height: 95px; }
 .sticker_pen .sticker.wide .selected.big { width: 120px; height: 110px; }
 
+.sticker_pen .sticker.wide .biggest .content { width: 150px; height: 130px; }
+.sticker_pen .sticker.wide .selected.biggest { width: 165px; height: 175px; }
+
 .sticker_pen .sticker.tall .big .content { width: 100px; height: 200px; }
 .sticker_pen .sticker.tall .selected.big { width: 135px; height: 215px; }
+
+.sticker_pen .sticker.tall .biggest .content { width: 150px; height: 250px; }
+.sticker_pen .sticker.tall .selected.biggest { width: 165px; height: 245px; }
+
 
 
 .sticker_pen .sticker .draggable.flipped .content { -webkit-transform: rotateY(180deg); } 
