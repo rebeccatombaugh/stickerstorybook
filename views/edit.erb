@@ -28,6 +28,9 @@
             <% end %>
         </div>   
         <div class="sticker_pen">
+          <button class="prev default bg-color-greenLight"><i class="icon-arrow-left"></i></button>
+          <button class="next default bg-color-greenDark"><i class="icon-arrow-right"></i></button>
+          <br /><br />
           
           <% @images.each do |image| %>
             <div data-icon="<%= image.name %>" class="<%= image.type %> <%= image.name %> sticker">

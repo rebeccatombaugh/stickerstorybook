@@ -54,6 +54,41 @@ $(document).ready(function() {
 
   load_the_data();
 
+  $('.sticker_pen button').click(function() {
+    var page_number = 0;
+    var MAX_PAGE_NUMBER = 3;
+    return function() {
+      if($(this).hasClass('prev'))
+        page_number--;
+      else
+        page_number++;
+        
+      if(page_number < 0)
+        page_number = 0;
+      else if(page_number > MAX_PAGE_NUMBER)
+        page_number = MAX_PAGE_NUMBER
+      
+      console.log('page: ', page_number);
+      
+      
+      var first_index = page_number * 6;
+      var last_index = first_index + 5;
+      
+      $('.sticker_pen .sticker .permanent').hide();
+      $('.sticker_pen .sticker .draggable').not('.dropped').hide();
+      for(var i = first_index; i <= last_index; i++) {
+        if(i == first_index && page_number != 0) {
+          var pixels = 1 * -500;
+          $('.sticker_pen .sticker').eq(i).css('margin-top', pixels + 'px');
+        }
+        
+        $('.sticker_pen .sticker').eq(i).find('.permanent').show();
+        $('.sticker_pen .sticker').eq(i).find('.draggable:last').show();
+      }
+        
+    };
+  }()).click();
+  
   $('.sticker').each(function() {
     var sticker_stack = $(this);
     
