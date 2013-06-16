@@ -63,7 +63,10 @@ function getImgSize(imgSrc, fn) {
 }
 
 $(document).ready(function() {
+  setup_the_page();
+});
 
+function setup_the_page(){
   load_the_data();
 
   $('#the_landscape').click(function(){
@@ -193,4 +196,4 @@ $(document).ready(function() {
       save_the_data();
     }
   }());
-});
+}
