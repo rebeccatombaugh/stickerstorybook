@@ -97,7 +97,8 @@ function setup_the_page(){
   var size_adjustments_completed = 0;
 
   $('.sticker').each(function() {
-    var adjustable_content = $(this).find('.content');
+    
+    var adjustable_content = $(this).find('.draggable').not('.dropped').find('.content');
     var src = adjustable_content.css('background-image').replace('url(', '').replace(')', '');
     
     getImgSize(src, function(width, height) {
