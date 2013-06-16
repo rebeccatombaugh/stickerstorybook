@@ -65,9 +65,10 @@ class App < Sinatra::Base
                ['popsicle',       'tall']
               ]}
     @backgrounds = [
+                     'blank',
                      'plains',
                      'jungle',
-                     'ocean'
+                     'ocean',
                    ] 
   end
 

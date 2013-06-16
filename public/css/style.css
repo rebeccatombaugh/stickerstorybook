@@ -24,17 +24,17 @@ body > div { }
 .sticker_pen .sticker.tall.popsicle,
 .sticker_pen .sticker.tall.popsicle .content { width: 70px; height: 140px; }
 
-.sticker_pen .sticker.wide .big .content { width: 105px; height: 95px; }
-.sticker_pen .sticker.wide .selected.big { width: 120px; height: 110px; }
+.sticker_pen .sticker.wide .big .content { width: 315px; height: 285px; }
+.sticker_pen .sticker.wide .selected.big { width: 360px; height: 330px; }
 
-.sticker_pen .sticker.wide .biggest .content { width: 150px; height: 130px; }
-.sticker_pen .sticker.wide .selected.biggest { width: 165px; height: 175px; }
+.sticker_pen .sticker.wide .biggest .content { width: 450px; height: 390px; }
+.sticker_pen .sticker.wide .selected.biggest { width: 495px; height: 525px; }
 
-.sticker_pen .sticker.tall .big .content { width: 100px; height: 200px; }
-.sticker_pen .sticker.tall .selected.big { width: 135px; height: 215px; }
+.sticker_pen .sticker.tall .big .content { width: 300px; height: 600px; }
+.sticker_pen .sticker.tall .selected.big { width: 405px; height: 645px; }
 
-.sticker_pen .sticker.tall .biggest .content { width: 150px; height: 250px; }
-.sticker_pen .sticker.tall .selected.biggest { width: 165px; height: 245px; }
+.sticker_pen .sticker.tall .biggest .content { width: 450px; height: 750px; }
+.sticker_pen .sticker.tall .selected.biggest { width: 495px; height: 735px; }
 
 .sticker_pen .sticker.wide .small .content { width: 65px; height: 55px; }
 .sticker_pen .sticker.wide .selected.small { width: 80px; height: 70px; }
@@ -124,6 +124,8 @@ body > div { }
 .landscape.menu > .jungle { background-image: url(../images/jungle.png); }
 .chosen.landscape.ocean,
 .landscape.menu > .ocean { background-image: url(../images/ocean.png); }
+.chosen.landscape.blank,
+.landscape.menu > .blank { background: white }
 
 .tools { display: none; border-top: 2px dashed gray; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
 .tools { background: url(../images/sticker_bg.png);  bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }

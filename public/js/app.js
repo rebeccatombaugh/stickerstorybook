@@ -66,6 +66,10 @@ $(document).ready(function() {
 
   load_the_data();
 
+  $('#the_landscape').click(function(){
+    $('.selected').click();
+  });
+
   $('.sticker').each(function() {
     var src = $(this).find('.content').css('background-image').replace('url(', '').replace(')', '');
     
@@ -85,9 +89,9 @@ $(document).ready(function() {
         page_number++;
         
       if(page_number < 0)
-        page_number = 0;
-      else if(page_number > MAX_PAGE_NUMBER)
-        page_number = MAX_PAGE_NUMBER
+        page_number = MAX_PAGE_NUMBER;
+      else if(page_number >= MAX_PAGE_NUMBER)
+        page_number = 0
       
       var first_index = page_number * 6;
       var last_index = first_index + 5;
@@ -186,6 +190,7 @@ $(document).ready(function() {
           current_size_index = 0;
         $('.selected').addClass(sizes[current_size_index]);
       }
+      save_the_data();
     }
   }());
 });
