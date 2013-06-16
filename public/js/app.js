@@ -34,6 +34,9 @@ function save_the_data(){
     var data = {
                  top: self.css('top'),
                  left: self.css('left'),
+                 height: self.css('height'),
+                 width: self.css('width'),
+                 current_size: self.data('current_size'),
                  icon: icon,
                  classList: class_list
                }
@@ -62,8 +65,14 @@ function load_the_data(){
     });
 
     div.css('position', 'relative');
-    div.css('left',     value['left']);
-    div.css('top',      value['top']);
+    div.css('left',          value['left']);
+    div.css('top',           value['top']);
+    div.css('height',        value['height']);
+    div.css('width',         value['width']);
+    div.data('current_size', value['current_size']);
+
+    div.find('.content').css('width', parseInt(value['width'], 10) - 20);
+    div.find('.content').css('height', parseInt(value['height'], 10) - 20);
 
     $('.' + value['icon']).append(div);
   });
@@ -280,16 +289,13 @@ function setup_the_page(){
 $(document).ready(function(){
 
   $('.sticker_pen').css('height', $('#the_landscape_menu').position().top);
-  
 
   $('.previous_page').click(function(){
     page_id = parseInt(page_id, 10) - 1 + '';
-    console.log(page_id);
     setup_the_page();
   });
   $('.next_page').click(function(){
     page_id = parseInt(page_id, 10) + 1 + '';
-    console.log(page_id);
     setup_the_page();
   });
 });
