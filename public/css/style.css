@@ -16,6 +16,10 @@ body > div { }
 .sticker_pen .sticker.wide .selected { width: 95px; height: 85px; }
 .sticker_pen .sticker.tall,
 .sticker_pen .sticker.tall .content { width: 70px; height: 100px; }
+.sticker_pen .sticker.tall.tallguy,
+.sticker_pen .sticker.tall.tallguy .content { width: 70px; height: 140px; }
+.sticker_pen .sticker.tall.popsicle,
+.sticker_pen .sticker.tall.popsicle .content { width: 70px; height: 140px; }
 .sticker_pen .sticker.tall .selected { width: 85px; height: 115px; }
 .sticker_pen .sticker .draggable.flipped .content { -webkit-transform: rotateY(180deg); } 
 
