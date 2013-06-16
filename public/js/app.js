@@ -67,11 +67,16 @@ $(document).ready(function() {
   load_the_data();
 
   $('.sticker').each(function() {
-    var src = $(this).find('.content').css('background-image').replace('url(', '').replace(')', '');
+    var adjustable_content = $(this).find('.content');
+    var src = adjustable_content.css('background-image').replace('url(', '').replace(')', '');
     
     getImgSize(src, function(width, height) {
       var width_to_height_ratio = width / height;
-      console.log(width_to_height_ratio, src);
+      var width = parseInt($(adjustable_content).css('width'), 10);
+      var new_height = (width / width_to_height_ratio) + 'px';
+      adjustable_content.css('height', new_height);
+      adjustable_content.parent().css('height', new_height);
+      adjustable_content.parent().parent().css('height', new_height);      
     });
   });
 
@@ -89,21 +94,40 @@ $(document).ready(function() {
       else if(page_number > MAX_PAGE_NUMBER)
         page_number = MAX_PAGE_NUMBER
       
-      var first_index = page_number * 6;
-      var last_index = first_index + 5;
-      
+      var first_index = $('.sticker_pen .permanent:visible').length;
+
+      $('.sticker_pen .sticker').css('margin-top', '');
       $('.sticker_pen .sticker .permanent').hide();
       $('.sticker_pen .sticker .draggable').not('.dropped').hide();
-      for(var i = first_index; i <= last_index; i++) {
-        if(i == first_index && page_number != 0) {
-          var pixels = 1 * -500;
-          $('.sticker_pen .sticker').eq(i).css('margin-top', pixels + 'px');
+      
+      
+      var next_image = $('.sticker_pen .sticker').eq(first_index);
+      next_index = first_index;
+      var total_height = 0;
+      while(total_height < 450) {
+        if(total_height == 0) {
+          
+          var pixels = 0;
+          for(var i = 0; i < (next_index); i++) {
+            var this_height = parseInt($('.sticker_pen .sticker').eq(i).css('height'), 10);
+            pixels -= this_height;
+            console.log('i', this_height); 
+          }
+
+          $(next_image).css('margin-top', (pixels) + 'px');
+          console.log('total pixels', pixels);
         }
         
-        $('.sticker_pen .sticker').eq(i).find('.permanent').show();
-        $('.sticker_pen .sticker').eq(i).find('.draggable').show();
-      }
+        console.log('showing', next_index);
+        $(next_image).show();
+        $(next_image).find('.permanent, .draggable').show();
+
+        next_index++;
+        next_image = $('.sticker_pen .sticker').eq(next_index);
+        var height = parseInt($(next_image).css('height'), 10);
+        total_height += height;
         
+      }        
     };
   }()).click();
   
