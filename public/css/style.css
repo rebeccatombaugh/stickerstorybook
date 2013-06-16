@@ -120,6 +120,8 @@ body > div { }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }
 .chosen.landscape.plains,
 .landscape.menu > .plains { background-image: url(../images/plains.png); }
+.chosen.landscape.zoo,
+.landscape.menu > .zoo { background-image: url(../images/zoo.png); }
 .chosen.landscape.jungle,
 .landscape.menu > .jungle { background-image: url(../images/jungle.png); }
 .chosen.landscape.ocean,

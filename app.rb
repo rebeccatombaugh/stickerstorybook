@@ -69,6 +69,7 @@ class App < Sinatra::Base
                      'plains',
                      'jungle',
                      'ocean',
+                     'zoo'
                    ] 
   end
 
