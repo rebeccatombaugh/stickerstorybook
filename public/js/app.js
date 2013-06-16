@@ -5,8 +5,13 @@ $(document).ready(function(){
     $(this).toggleClass('selected');                  
     $('.selected').not(this).removeClass('selected');
     
-    if($('.selected').length > 0)
+    if($('.selected').length > 0) {
+      
+      var content_height = parseInt($(this).find('.content').css('height'), 10);
+      $(this).css('height', (content_height + 20) + 'px');
+      
       $('.tools').show();
+    }
     else
       $('.tools').hide();
   });      
@@ -169,16 +174,6 @@ function setup_the_page(){
     };
   }());
   
-  $('.sticker_pen').delegate('.dropped', 'click', function() {
-    $(this).toggleClass('selected');                  
-    $('.selected').not(this).removeClass('selected');
-    
-    if($('.selected').length > 0)
-      $('.tools').show();
-    else
-      $('.tools').hide();
-  });      
-
   $('.sticker').each(function() {
     var sticker_stack = $(this);
     
