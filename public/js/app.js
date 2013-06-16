@@ -8,12 +8,15 @@ $(document).ready(function(){
     if($('.selected').length > 0) {
       
       var content_height = parseInt($(this).find('.content').css('height'), 10);
+      var content_width = parseInt($(this).find('.content').css('width'), 10);
       $(this).css('height', (content_height + 20) + 'px');
+      $(this).css('width', (content_width + 20) + 'px');
       
       $('.tools').show();
     }
     else
       $('.tools').hide();
+      
   });      
 });
 
@@ -36,7 +39,7 @@ function save_the_data(){
                  left: self.css('left'),
                  height: self.css('height'),
                  width: self.css('width'),
-                 current_size: self.data('current_size'),
+                 current_size: self.data('current_size') || 4,
                  icon: icon,
                  classList: class_list
                }
@@ -70,9 +73,9 @@ function load_the_data(){
     div.css('height',        value['height']);
     div.css('width',         value['width']);
     div.data('current_size', value['current_size']);
-
-    div.find('.content').css('width', parseInt(value['width'], 10) - 20);
-    div.find('.content').css('height', parseInt(value['height'], 10) - 20);
+    
+    div.find('.content').css('width', (parseInt(value['width'], 10) - 20) + 'px');
+    div.find('.content').css('height', (parseInt(value['height'], 10) - 20) + 'px');
 
     $('.' + value['icon']).append(div);
   });
@@ -114,8 +117,11 @@ function setup_the_page(){
       var sized_width = parseInt($(adjustable_content).css('width'), 10);
       var sized_height = (sized_width / (width / height)) + 'px';
       adjustable_content.css('height', sized_height);
-      adjustable_content.parent().css('height', sized_height);
+      adjustable_content.css('width', sized_width);
+      adjustable_content.parent().css('height', sized_height + 20);
+      adjustable_content.parent().css('width', sized_width + 20);
       adjustable_content.parent().parent().css('height', sized_height); 
+      adjustable_content.parent().parent().css('width', sized_width);       
       
       size_adjustments_completed++;
       if(size_adjustments_completed == sticker_count) {
@@ -249,7 +255,7 @@ function setup_the_page(){
     var sizes = [0, .4, .6, .8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 4];
     
     return function() {
-      var current_size_index = parseInt($('.selected').data('current_size'), 10) || 3;
+      var current_size_index = parseInt($('.selected').data('current_size'), 10) || 4;
       var previous_size_index = current_size_index;
       
 
