@@ -26,6 +26,12 @@ body > div { }
 .sticker_pen .pig .content { background-image: url(../images/pig.png); }
 .sticker_pen .butterfly .content { background-image: url(../images/butterfly.png); }
 .sticker_pen .helicopter .content { background-image: url(../images/helicopter.png); }
+.sticker_pen .spider .content { background-image: url(../images/spider.png); }
+.sticker_pen .popsicle .content { background-image: url(../images/popsicle.png); }
+.sticker_pen .curly .content { background-image: url(../images/curly.png); }
+.sticker_pen .tallguy .content { background-image: url(../images/tallguy.png); }
+.sticker_pen .dinosaur .content { background-image: url(../images/dinosaur.png); }
+.sticker_pen .wand .content { background-image: url(../images/wand.png); }
 
 .landscape.menu { background: url(../images/sticker_bg.png);  border-top: 2px dashed black; bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }
 .landscape.menu > div { background-size: 100%; background-repeat: no-repeat; float: left; height: 80px; margin: 0 10px 0; width: 80px; }

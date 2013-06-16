@@ -11,7 +11,13 @@ class App < Sinatra::Base
                ['shark',      'wide'],
                ['pig',        'wide'],
                ['butterfly',  'tall'],
-               ['helicopter', 'wide']
+               ['helicopter', 'wide'],
+               ['spider',     'wide'],
+               ['curly',      'tall'],
+               ['tallguy',    'tall'],
+               ['wand',       'tall'],
+               ['popsicle',   'tall'],
+               ['dinosaur',   'tall']
               ]}
     @backgrounds = [
                      'plains',
