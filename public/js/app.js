@@ -68,9 +68,6 @@ $(document).ready(function() {
       else if(page_number > MAX_PAGE_NUMBER)
         page_number = MAX_PAGE_NUMBER
       
-      console.log('page: ', page_number);
-      
-      
       var first_index = page_number * 6;
       var last_index = first_index + 5;
       
