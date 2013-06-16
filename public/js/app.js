@@ -66,6 +66,10 @@ $(document).ready(function() {
 
   load_the_data();
 
+  $('#the_landscape').click(function(){
+    $('.selected').click();
+  });
+
   $('.sticker').each(function() {
     var src = $(this).find('.content').css('background-image').replace('url(', '').replace(')', '');
     
