@@ -39,6 +39,8 @@ body > div { }
 .landscape.menu > .plains { background-image: url(../images/plains.png); }
 .chosen.landscape.jungle,
 .landscape.menu > .jungle { background-image: url(../images/jungle.png); }
+.chosen.landscape.ocean,
+.landscape.menu > .ocean { background-image: url(../images/ocean.png); }
 
 .tools { display: none; background: white; border-top: 2px solid red; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
 

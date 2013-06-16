@@ -22,6 +22,7 @@ class App < Sinatra::Base
     @backgrounds = [
                      'plains',
                      'jungle',
+                     'ocean'
                    ] 
   end
 
