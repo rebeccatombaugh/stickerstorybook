@@ -59,10 +59,10 @@ body > div { }
 .sticker_pen .tree .content { background-image: url(../images/tree.png); }
 .sticker_pen .shark .content { background-image: url(../images/shark.png); }
 .sticker_pen .pig .content { background-image: url(../images/pig.png); }
+.sticker_pen .boat .content { background-image: url(../images/boat.png); }
 .sticker_pen .butterfly .content { background-image: url(../images/butterfly.png); }
 .sticker_pen .helicopter .content { background-image: url(../images/helicopter.png); }
 .sticker_pen .spider .content { background-image: url(../images/spider.png); }
-.sticker_pen .popsicle .content { background-image: url(../images/popsicle.png); }
 .sticker_pen .curly .content { background-image: url(../images/curly.png); }
 .sticker_pen .tallguy .content { background-image: url(../images/tallguy.png); }
 .sticker_pen .dinosaur .content { background-image: url(../images/dinosaur.png); }
@@ -95,6 +95,7 @@ body > div { }
 .sticker_pen .pizza .content { background-image: url(../images/pizza.png); }
 .sticker_pen .computer .content { background-image: url(../images/computer.png); }
 .sticker_pen .iphone .content { background-image: url(../images/iphone.png); }
+.sticker_pen .pond .content { background-image: url(../images/pond.png); }
 .sticker_pen .train-boxcar .content { background-image: url(../images/train-boxcar.png); }
 .sticker_pen .train-red .content { background-image: url(../images/train-red.png); }
 .sticker_pen .christmas-tree .content { background-image: url(../images/christmas-tree.png); }

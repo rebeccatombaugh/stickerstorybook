@@ -66,70 +66,87 @@ $(document).ready(function() {
 
   load_the_data();
 
+
+
+  var sticker_count = $('.sticker').length;
+  var size_adjustments_completed = 0;
   $('.sticker').each(function() {
     var adjustable_content = $(this).find('.content');
     var src = adjustable_content.css('background-image').replace('url(', '').replace(')', '');
     
     getImgSize(src, function(width, height) {
-      var width_to_height_ratio = width / height;
-      var width = parseInt($(adjustable_content).css('width'), 10);
-      var new_height = (width / width_to_height_ratio) + 'px';
-      adjustable_content.css('height', new_height);
-      adjustable_content.parent().css('height', new_height);
-      adjustable_content.parent().parent().css('height', new_height);      
+      var sized_width = parseInt($(adjustable_content).css('width'), 10);
+      var sized_height = (sized_width / (width / height)) + 'px';
+      adjustable_content.css('height', sized_height);
+      adjustable_content.parent().css('height', sized_height);
+      adjustable_content.parent().parent().css('height', sized_height); 
+      
+      size_adjustments_completed++;
+      if(size_adjustments_completed == sticker_count) {
+        calculate_pages();
+        show_page(0);
+      }     
     });
   });
+  
+  
+  var calculate_pages = function() {
+    var current_page = 0;
+    var total_height_on_this_page = 0;
+    var total_height_on_previous_pages = 0;
+    $('.sticker_pen .sticker').each(function() {
 
-  $('.sticker_pen button').click(function() {
-    var page_number = 0;
-    var MAX_PAGE_NUMBER = 12;
-    return function() {
-      if($(this).hasClass('prev'))
-        page_number--;
-      else
-        page_number++;
-        
-      if(page_number < 0)
-        page_number = 0;
-      else if(page_number > MAX_PAGE_NUMBER)
-        page_number = MAX_PAGE_NUMBER
+      var sticker = $(this);
       
-      var first_index = $('.sticker_pen .permanent:visible').length;
-
+      if(total_height_on_this_page == 0) {
+        $(sticker).data('topmargin', ((-1 * total_height_on_previous_pages) + 40) + 'px');
+        $(sticker).addClass('first_on_page');
+      }
+      
+      $(sticker).addClass('page_' + current_page) 
+      
+      var height = parseInt($(sticker).css('height'), 10);
+      total_height_on_this_page += height;
+      if((total_height_on_this_page + height) > 450) {  
+        total_height_on_previous_pages += total_height_on_this_page;
+        total_height_on_this_page = 0;
+        current_page++;
+      }
+    });        
+  };
+  
+  
+  var next_index = 0;
+ 
+  var show_page = function() {
+    return function(page_number) {      
       $('.sticker_pen .sticker').css('margin-top', '');
       $('.sticker_pen .sticker .permanent').hide();
-      $('.sticker_pen .sticker .draggable').not('.dropped').hide();
+      $('.sticker_pen .sticker .draggable').not('.dropped').hide();      
       
+      $('.sticker_pen .sticker.page_' + page_number + '.first_on_page').css('margin-top', $('.sticker_pen .sticker.page_' + page_number + '.first_on_page').data('topmargin')).show();
+      $('.sticker_pen .sticker.page_' + page_number + ' .permanent').show();
+      $('.sticker_pen .sticker.page_' + page_number + ' .draggable').not('.dropped').show();      
+
+    }
+  }();
+  
+  $('.sticker_pen button').click(function() {
+    var current_page = 0;
+    
+    return function() {
+      if($(this).hasClass('next')) {        
+        var prospective_page = current_page + 1;
+      } else {
+        var prospective_page = current_page - 1;
+      }
       
-      var next_image = $('.sticker_pen .sticker').eq(first_index);
-      next_index = first_index;
-      var total_height = 0;
-      while(total_height < 450) {
-        if(total_height == 0) {
-          
-          var pixels = 0;
-          for(var i = 0; i < (next_index); i++) {
-            var this_height = parseInt($('.sticker_pen .sticker').eq(i).css('height'), 10);
-            pixels -= this_height;
-            console.log('i', this_height); 
-          }
-
-          $(next_image).css('margin-top', (pixels) + 'px');
-          console.log('total pixels', pixels);
-        }
-        
-        console.log('showing', next_index);
-        $(next_image).show();
-        $(next_image).find('.permanent, .draggable').show();
-
-        next_index++;
-        next_image = $('.sticker_pen .sticker').eq(next_index);
-        var height = parseInt($(next_image).css('height'), 10);
-        total_height += height;
-        
-      }        
+      if($('.sticker_pen .sticker.page_' + prospective_page).length > 0) {
+        current_page = prospective_page;
+        show_page(current_page);
+      }
     };
-  }()).click();
+  }());
   
   $('.sticker_pen').delegate('.dropped', 'click', function() {
     $(this).toggleClass('selected');                  
