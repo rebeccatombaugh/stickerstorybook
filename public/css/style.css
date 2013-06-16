@@ -81,7 +81,7 @@ body > div { }
 .chosen.landscape.ocean,
 .landscape.menu > .ocean { background-image: url(../images/ocean.png); }
 
-.tools { display: block; border-top: 2px solid red; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
+.tools { display: none; border-top: 2px dashed gray; bottom: 0; clear: left; float: left; height: 150px; position: absolute; width: 1024px; }
 .tools { background: url(../images/sticker_bg.png);  bottom: 0px; height: 80px; padding: 10px; position: absolute; width: 100%; z-index: 10; }
 
 
