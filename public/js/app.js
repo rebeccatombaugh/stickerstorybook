@@ -213,6 +213,10 @@ function setup_the_page(){
 }
 
 $(document).ready(function(){
+
+  $('.sticker_pen').css('height', $('#the_landscape_menu').position().top);
+  
+
   $('.previous_page').click(function(){
     page_id = parseInt(page_id, 10) - 1 + '';
     console.log(page_id);
