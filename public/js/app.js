@@ -236,22 +236,42 @@ function setup_the_page(){
   });
 
   $('button.grow, button.shrink').click(function() {
-    var sizes = ['smallest', 'small', 'medium', 'big', 'biggest'];
-    var current_size_index = 2;
+    var sizes = [0, .4, .6, .8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 4];
     
     return function() {
+      var current_size_index = parseInt($('.selected').data('current_size'), 10) || 3;
+      var previous_size_index = current_size_index;
+      
+
+      
       $('.selected').removeClass('smallest small medium big biggest');
       if($(this).hasClass('grow')) {
-        current_size_index++;
-        if(current_size_index > (sizes.length - 1))
-          current_size_index = sizes.length - 1;
-        $('.selected').addClass(sizes[current_size_index]);
+        if((current_size_index + 1) > (sizes.length - 1))
+          return;        
+        else
+          current_size_index++;
+        
       } else {
-        current_size_index--;
-        if(current_size_index < 0)
-          current_size_index = 0;
-        $('.selected').addClass(sizes[current_size_index]);
+        if((current_size_index - 1) < 1) 
+          return;
+        else
+          current_size_index--;
       }
+   
+      var current_width = parseInt($('.selected .content').css('width'), 10);
+      var current_height = parseInt($('.selected .content').css('height'), 10);
+      var new_width = current_width * sizes[current_size_index] / sizes[previous_size_index];
+      var new_height = current_height * sizes[current_size_index] / sizes[previous_size_index];
+      $('.selected .content').css({
+        width: new_width + 'px',
+        height: new_height + 'px'
+      });
+      $('.selected').css({
+        width: (new_width + 20) + 'px',
+        height: (new_height + 20) + 'px'
+      });
+      
+      $('.selected').data('current_size', current_size_index + '');
       save_the_data();
     }
   }());
