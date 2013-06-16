@@ -87,7 +87,7 @@ $(document).ready(function() {
       if(page_number < 0)
         page_number = 0;
       else if(page_number > MAX_PAGE_NUMBER)
-        page_number = MAX_PAGE_NUMBER
+        page_number = 0
       
       var first_index = page_number * 6;
       var last_index = first_index + 5;
