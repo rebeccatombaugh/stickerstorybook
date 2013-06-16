@@ -36,6 +36,20 @@ body > div { }
 .sticker_pen .sticker.tall .biggest .content { width: 150px; height: 250px; }
 .sticker_pen .sticker.tall .selected.biggest { width: 165px; height: 245px; }
 
+.sticker_pen .sticker.wide .small .content { width: 65px; height: 55px; }
+.sticker_pen .sticker.wide .selected.small { width: 80px; height: 70px; }
+
+.sticker_pen .sticker.wide .smallest .content { width: 30px; height: 20px; }
+.sticker_pen .sticker.wide .selected.smallest { width: 45px; height: 35px; }
+
+.sticker_pen .sticker.tall .small .content { width: 60px; height: 150px; }
+.sticker_pen .sticker.tall .selected.small { width: 75px; height: 100px; }
+
+.sticker_pen .sticker.tall .smallest .content { width: 30px; height: 100px; }
+.sticker_pen .sticker.tall .selected.smallest { width: 45px; height: 55px; }
+
+
+
 
 
 .sticker_pen .sticker .draggable.flipped .content { -webkit-transform: rotateY(180deg); } 
