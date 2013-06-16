@@ -1,4 +1,17 @@
 
+  
+$(document).ready(function(){
+  $('.sticker_pen').delegate('.dropped', 'click', function() {
+    $(this).toggleClass('selected');                  
+    $('.selected').not(this).removeClass('selected');
+    
+    if($('.selected').length > 0)
+      $('.tools').show();
+    else
+      $('.tools').hide();
+  });      
+});
+
 var page_id = "1"
 
 function save_the_data(){
@@ -68,6 +81,7 @@ $(document).ready(function() {
 });
 
 function setup_the_page(){
+  $('.dropped').remove();
   load_the_data();
 
   $('#the_landscape').click(function(){
@@ -114,16 +128,6 @@ function setup_the_page(){
         
     };
   }()).click();
-  
-  $('.sticker_pen').delegate('.dropped', 'click', function() {
-    $(this).toggleClass('selected');                  
-    $('.selected').not(this).removeClass('selected');
-    
-    if($('.selected').length > 0)
-      $('.tools').show();
-    else
-      $('.tools').hide();
-  });      
 
   $('.sticker').each(function() {
     var sticker_stack = $(this);
@@ -169,6 +173,15 @@ function setup_the_page(){
   
   $('button.delete').click(function() {
     $('.selected.draggable').remove();
+
+    $(this).toggleClass('selected');                  
+    $('.selected').not(this).removeClass('selected');
+    
+    if($('.selected').length > 0)
+      $('.tools').show();
+    else
+      $('.tools').hide();
+
     save_the_data();
   });
   
@@ -203,13 +216,11 @@ $(document).ready(function(){
   $('.previous_page').click(function(){
     page_id = parseInt(page_id, 10) - 1 + '';
     console.log(page_id);
-    $('.dropped').remove();
     setup_the_page();
   });
   $('.next_page').click(function(){
     page_id = parseInt(page_id, 10) + 1 + '';
     console.log(page_id);
-    $('.dropped').remove();
     setup_the_page();
   });
 });
