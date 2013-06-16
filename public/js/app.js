@@ -83,7 +83,7 @@ $(document).ready(function() {
         }
         
         $('.sticker_pen .sticker').eq(i).find('.permanent').show();
-        $('.sticker_pen .sticker').eq(i).find('.draggable:last').show();
+        $('.sticker_pen .sticker').eq(i).find('.draggable:first').show();
       }
         
     };

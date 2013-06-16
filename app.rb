@@ -12,7 +12,7 @@ class App < Sinatra::Base
                ['pig',        'wide'],
                ['butterfly',  'tall'],
                ['helicopter', 'wide'],
-               ['spider',     'wide'],
+               ['spider',     'tall'],
                ['curly',      'tall'],
                ['tallguy',    'tall'],
                ['wand',       'tall'],
