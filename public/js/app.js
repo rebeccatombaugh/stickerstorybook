@@ -190,6 +190,7 @@ $(document).ready(function() {
           current_size_index = 0;
         $('.selected').addClass(sizes[current_size_index]);
       }
+      save_the_data();
     }
   }());
 });
