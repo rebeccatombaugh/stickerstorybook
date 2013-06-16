@@ -88,46 +88,96 @@ function setup_the_page(){
     $('.selected').click();
   });
 
+  var sticker_count = $('.sticker').length;
+  var size_adjustments_completed = 0;
+
   $('.sticker').each(function() {
-    var src = $(this).find('.content').css('background-image').replace('url(', '').replace(')', '');
+    var adjustable_content = $(this).find('.content');
+    var src = adjustable_content.css('background-image').replace('url(', '').replace(')', '');
     
     getImgSize(src, function(width, height) {
-      var width_to_height_ratio = width / height;
-      console.log(width_to_height_ratio, src);
+      var sized_width = parseInt($(adjustable_content).css('width'), 10);
+      var sized_height = (sized_width / (width / height)) + 'px';
+      adjustable_content.css('height', sized_height);
+      adjustable_content.parent().css('height', sized_height);
+      adjustable_content.parent().parent().css('height', sized_height); 
+      
+      size_adjustments_completed++;
+      if(size_adjustments_completed == sticker_count) {
+        calculate_pages();
+        show_page(0);
+      }     
     });
   });
+  
+  
+  var calculate_pages = function() {
+    var current_page = 0;
+    var total_height_on_this_page = 0;
+    var total_height_on_previous_pages = 0;
+    $('.sticker_pen .sticker').each(function() {
 
-  $('.sticker_pen button').click(function() {
-    var page_number = 0;
-    var MAX_PAGE_NUMBER = 12;
-    return function() {
-      if($(this).hasClass('prev'))
-        page_number--;
-      else
-        page_number++;
-        
-      if(page_number < 0)
-        page_number = MAX_PAGE_NUMBER;
-      else if(page_number >= MAX_PAGE_NUMBER)
-        page_number = 0
+      var sticker = $(this);
       
-      var first_index = page_number * 6;
-      var last_index = first_index + 5;
-      
-      $('.sticker_pen .sticker .permanent').hide();
-      $('.sticker_pen .sticker .draggable').not('.dropped').hide();
-      for(var i = first_index; i <= last_index; i++) {
-        if(i == first_index && page_number != 0) {
-          var pixels = 1 * -500;
-          $('.sticker_pen .sticker').eq(i).css('margin-top', pixels + 'px');
-        }
-        
-        $('.sticker_pen .sticker').eq(i).find('.permanent').show();
-        $('.sticker_pen .sticker').eq(i).find('.draggable').show();
+      if(total_height_on_this_page == 0) {
+        $(sticker).data('topmargin', ((-1 * total_height_on_previous_pages) + 40) + 'px');
+        $(sticker).addClass('first_on_page');
       }
-        
+      
+      $(sticker).addClass('page_' + current_page) 
+      
+      var height = parseInt($(sticker).css('height'), 10);
+      total_height_on_this_page += height;
+      if((total_height_on_this_page + height) > 450) {  
+        total_height_on_previous_pages += total_height_on_this_page;
+        total_height_on_this_page = 0;
+        current_page++;
+      }
+    });        
+  };
+  
+  
+  var next_index = 0;
+ 
+  var show_page = function() {
+    return function(page_number) {      
+      $('.sticker_pen .sticker').css('margin-top', '');
+      $('.sticker_pen .sticker .permanent').hide();
+      $('.sticker_pen .sticker .draggable').not('.dropped').hide();      
+      
+      $('.sticker_pen .sticker.page_' + page_number + '.first_on_page').css('margin-top', $('.sticker_pen .sticker.page_' + page_number + '.first_on_page').data('topmargin')).show();
+      $('.sticker_pen .sticker.page_' + page_number + ' .permanent').show();
+      $('.sticker_pen .sticker.page_' + page_number + ' .draggable').not('.dropped').show();      
+
+    }
+  }();
+  
+  $('.sticker_pen button').click(function() {
+    var current_page = 0;
+    
+    return function() {
+      if($(this).hasClass('next')) {        
+        var prospective_page = current_page + 1;
+      } else {
+        var prospective_page = current_page - 1;
+      }
+      
+      if($('.sticker_pen .sticker.page_' + prospective_page).length > 0) {
+        current_page = prospective_page;
+        show_page(current_page);
+      }
     };
-  }()).click();
+  }());
+  
+  $('.sticker_pen').delegate('.dropped', 'click', function() {
+    $(this).toggleClass('selected');                  
+    $('.selected').not(this).removeClass('selected');
+    
+    if($('.selected').length > 0)
+      $('.tools').show();
+    else
+      $('.tools').hide();
+  });      
 
   $('.sticker').each(function() {
     var sticker_stack = $(this);
