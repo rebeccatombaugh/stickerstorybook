@@ -148,4 +148,7 @@ $(document).ready(function() {
     save_the_data();
   });
 
+  $('button.grow').click(function() {
+    $('.selected.draggable').toggleClass('big');
+  });
 });
